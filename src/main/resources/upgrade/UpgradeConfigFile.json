@@ -1,0 +1,36 @@
+{
+  "isUpdateDbVersion":"true",
+  "tableName":"t_system_info",
+  "fieldName":"param_value",
+  "queryWhere":"param='DBVersion'",
+  "updateItem":[
+    {
+      "version":"1.01",
+      "updateBody":[
+        {
+          "type":"SqlFile",
+          "dbType":"Mysql",
+          "text":"/mysql/file/create_table_t_user_20180326.sql",
+          "desc":"创建t_user表"
+        },
+        {
+          "type":"SqlStatement",
+          "dbType":"Mysql",
+          "text":"INSERT INTO `t_user` (`id`, `username`, `password`) VALUES (REPLACE(UUID(),'-',''), 'admin', '123456');",
+          "desc":"插入一条user数据"
+        }
+      ]
+    },
+    {
+      "version":"1.02",
+      "updateBody":[
+        {
+          "type":"SqlStatement",
+          "dbType":"Mysql",
+          "text":"CREATE VIEW test AS  (SELECT * from  t_system_info);",
+          "desc":"创建视图"
+        }
+      ]
+    }
+  ]
+}
